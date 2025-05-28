@@ -7,13 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script>
-    // Leer el parámetro "sabor" de la URL
     function getSaborFromURL() {
       const params = new URLSearchParams(window.location.search);
       return params.get('sabor');
     }
-
-    // Cargar el sabor inicial si viene desde index.html
     function setSaborInicial() {
       const sabor = getSaborFromURL();
       if (sabor) {
@@ -21,8 +18,6 @@
         addProducto(sabor);
       }
     }
-
-    // Lista de productos agregados
     const productos = [];
     const precioPorProducto = 1000;
     const costoEnvio = 300;
