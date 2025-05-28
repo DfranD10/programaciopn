@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pedido - FrioLoko Helados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Leer el parámetro "sabor" de la URL
+    function getSaborFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('sabor');
+    }
+
+    // Cargar el sabor inicial si viene desde index.html
+    function setSaborInicial() {
+      const sabor = getSaborFromURL();
+      if (sabor) {
+        document.querySelector(`[value="${sabor}"]`).selected = true;
+        addProducto(sabor);
+      }
+    }
+
+    // Lista de productos agregados
+    const productos = [];
+    const precioPorProducto = 1000;
+    const costoEnvio = 300;
+
+    function addProducto(sabor) {
+      if (!sabor) return;
+      productos.push(sabor);
+      actualizarLista();
+      actualizarTotal();
+    }
+
+    function actualizarLista() {
+      const lista = document.getElementById('lista-productos');
+      lista.innerHTML = '';
+      productos.forEach((sabor, index) => {
+        const li = document.createElement('li');
+        li.textContent = sabor;
+        lista.appendChild(li);
+      });
+    }
+
+    function actualizarTotal() {
+      const subtotal = productos.length * precioPorProducto;
+      const total = subtotal + costoEnvio;
+      document.getElementById('subtotal').textContent = `$${subtotal}`;
+      document.getElementById('envio').textContent = `$${costoEnvio}`;
+      document.getElementById('total').textContent = `$${total}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', setSaborInicial);
+  </script>
+</head>
+<body>
+  <header>
+    <h1>FrioLoko Helados</h1>
+    <p>¡Los helados más locos y deliciosos del verano!</p>
+  </header>
+
+  <section id="formulario" style="padding: 30px; background-color: #fff3e0;">
+    <h2 style="text-align:center">Formulario de Pedido</h2>
+    <form style="max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+      <label>Nombre del receptor:
+        <input type="text" name="nombre" required>
+      </label>
+
+      <label>Calle y dirección:
+        <input type="text" name="direccion" required>
+      </label>
+
+      <label>Teléfono:
+        <input type="tel" name="telefono" required>
+      </label>
+
+      <label>Elegí otro sabor para agregar:
+        <select id="selector-sabor">
+          <option value="Frutilla">Frutilla</option>
+          <option value="Chocolate">Chocolate</option>
+          <option value="Menta Granizada">Menta Granizada</option>
+          <option value="Dulce de Leche">Dulce de Leche</option>
+          <option value="Cookies & Cream">Cookies & Cream</option>
+        </select>
+        <button type="button" onclick="addProducto(document.getElementById('selector-sabor').value)">Agregar</button>
+      </label>
+
+      <div>
+        <p><strong>Productos seleccionados:</strong></p>
+        <ul id="lista-productos"></ul>
+      </div>
+
+      <p><strong>Precio del pedido:</strong> <span id="subtotal">$0</span></p>
+      <p><strong>Costo de envío:</strong> <span id="envio">$300</span></p>
+      <p><strong>Total:</strong> <span id="total">$300</span></p>
+
+      <button type="submit">Confirmar pedido</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 FrioLoko Helados. Todos los derechos reservados.
+  </footer>
+</body>
+</html>

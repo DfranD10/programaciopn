@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background-color: #00bcd4;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+nav {
+  background-color: #0097a7;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 30px;
+  background: url('https://images.unsplash.com/photo-1589712235274-73b13fdf1066?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.item {
+  background: white;
+  border-radius: 10px;
+  margin: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 250px;
+  text-align: center;
+  padding: 20px;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.item h3 {
+  margin: 15px 0 5px;
+}
+
+.item button {
+  background-color: #00bcd4;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.item button:hover {
+  background-color: #008ba3;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #e0f7fa;
+  color: #333;
+  margin-top: 40px;
+}
